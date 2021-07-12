@@ -6,7 +6,7 @@
 /*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:06:46 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/10 21:16:23 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/12 21:48:17 by oidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,13 @@ typedef struct s_data
 	t_node	*stack_b;
 	t_node	*instruction_list;
 }               t_data;
+
+t_node		*ft_listlast(t_node *list);
+int			ft_isdigit(int c);
+long long	ft_atoi(const char *str);
+int			ft_clear(t_data **data);
+void		init_data(t_data *data);
+t_node		*fill_stacks(char **argv, int argc);
+void		print_list(t_node *head);
 
 #endif
