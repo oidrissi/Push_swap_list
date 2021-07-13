@@ -39,5 +39,5 @@ int		ft_clear(t_data **data)
 	free_node(&((*data)->stack_b));
 	free_node(&((*data)->instruction_list));
 	free(*data);
-	return (0);
+	return (1);
 }

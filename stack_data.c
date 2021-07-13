@@ -18,12 +18,12 @@ t_node	*create_new_node(int elem)
 
 	tmp = (t_node *)malloc(sizeof(t_node));
 	tmp->value = elem;
+	tmp->instruction = NULL;
 	tmp->next = NULL;
 	return (tmp);
-	//tmp = data->stack_a;
 }
 
-int	stack_length(t_node	*stack)
+int		stack_length(t_node	*stack)
 {
 	int		stack_length;
 	t_node	*tmp;
@@ -50,12 +50,6 @@ void	print_list(t_node *head)
 	}
 }
 
-    // while (tmp->next != NULL)
-    // {
-    //     print_list(tmp);
-    //     tmp = tmp->next;
-    // }
-
 void	add_back(t_node **head, t_node *to_insert)
 {
 	to_insert->next = NULL;
@@ -68,13 +62,11 @@ void	add_back(t_node **head, t_node *to_insert)
 
 t_node	*fill_stacks(char **argv, int argc)
 {
-	int elements;
 	int i;
 	t_node *tmp;
 
 	i = 1;
-    tmp = NULL;
-	elements = argc - 1;
+	tmp = NULL;
 	while (argv[i])
 	{
 		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
@@ -82,11 +74,11 @@ t_node	*fill_stacks(char **argv, int argc)
 		i++;
 	}
 	i = 1;
-	while (elements > 0)
+	while (i < argc)
 	{
 		add_back(&(tmp), create_new_node(ft_atoi(argv[i])));
-        /* adds element in the next node */
-		elements--;
+		// adds node while remembering where it last was pointing at
+		i++;
 	}
 	return (tmp);
 }
