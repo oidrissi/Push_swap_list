@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helpers_2.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/13 21:01:58 by oidrissi          #+#    #+#             */
+/*   Updated: 2021/07/13 21:01:58 by oidrissi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		ft_strcmp(char *s, char *comp)
@@ -43,22 +55,22 @@ int	find_highest(t_node *stack)
 int	find_lowest(t_node *stack)
 {
 	t_node	*tmp;
-	int		highest;
+	int		lowest;
 	int		i;
 
 	tmp = stack;
 	i = 1;
-	highest = -2147483648;
+	lowest = 2147483647;
 	while (tmp != NULL)
 	{
-		if (tmp->value > highest)
-			highest = tmp->value;
+		if (tmp->value > lowest)
+			lowest = tmp->value;
 		tmp = tmp->next;
 	}
 	tmp = stack;
 	while (tmp)
 	{
-		if (tmp->value == highest)
+		if (tmp->value == lowest)
 			return (i);
 		tmp = tmp->next;
 		i++;

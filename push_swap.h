@@ -6,7 +6,7 @@
 /*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:06:46 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/12 21:48:17 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/13 21:06:15 by oidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void		ra(t_data *data);
 void		rra(t_data *data);
 void		rb(t_data *data);
 void		rrb(t_data *data);
+void    	sort_4(t_data *data);
 // void		rr(t_data *data);
 // void		rrr(t_data *data);
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_small.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/13 21:02:08 by oidrissi          #+#    #+#             */
+/*   Updated: 2021/07/13 21:02:08 by oidrissi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_3(t_data *data)
@@ -57,13 +69,14 @@ void    smart_push(t_data *data, int i, int j)
         i--;
         least_moves1++;
     }
-    while (j < data->stack_a->stack_size_a - 1)
+    while (j < stack_length(data->stack_a))
     {
         j++;
         least_moves2++;
     }
     if (least_moves1 > least_moves2)
     {
+        printf("%d\n")
         while(least_moves2 > 0)
         {
             exec_instruction("rra", data);
@@ -88,12 +101,14 @@ void    sort_4(t_data *data)
     int     j;
 
     j = find_lowest(data->stack_a);
+    // printf("%d\n", j);
 	i = find_highest(data->stack_a);
-    if (j == 0 || i == 0)
+    // printf("%d\n", i);
+    if (j == 1 || i == 1)
     {
         exec_instruction("pb", data);
         sort_3(data);
-        if (j == 0)
+        if (j == 1)
         {
             exec_instruction("pa", data);
             exec_instruction("ra", data);
@@ -101,9 +116,9 @@ void    sort_4(t_data *data)
         else
             exec_instruction("pa", data);
     }
-    // else
-    // {
-    //     smart_push(data, i, j);
-    //     sort_3(data);
-    // }
+    else
+    {
+        smart_push(data, i, j);
+        sort_3(data);
+    }
 }

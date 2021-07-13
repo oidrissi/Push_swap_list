@@ -6,7 +6,7 @@
 /*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:11:15 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/12 21:54:12 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/13 21:54:16 by oidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ int		is_dup(t_node *stack)
 	return (0);
 }
 
+// void	sort(t_data *data)
+// {
+	
+// }
+
 int		main(int	argc, char	**argv)
 {
 	t_data	*data;
@@ -70,7 +75,14 @@ int		main(int	argc, char	**argv)
 		exec_instruction("sa", data);
 	else if (stack_length(data->stack_a) == 3)
 		sort_3(data);
+	else if (stack_length(data->stack_a) == 4)
+		sort_4(data);
+	// else if (stack_length(data->stack_a) > 5)
+	// 	sort(data);
+	printf("STACK A:\n");
     print_list(data->stack_a);
+	printf("STACK B:\n");
+	print_list(data->stack_b);
 	// printlist_cmds(data->cmd_list);
 	ft_clear(&data);
 	return (1);
