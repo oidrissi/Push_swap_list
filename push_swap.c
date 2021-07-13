@@ -61,13 +61,15 @@ int		main(int	argc, char	**argv)
 	
 	data = malloc(sizeof(t_data));
 	init_data(data);
-	if (argc == 1 || argc == 2)
-		return 0;
+	if (argc == 1 || argc == 2 || !correct_input(argv))
+		return (ft_clear(&data));
 	data->stack_a = fill_stacks(argv, argc);
 	if (is_sorted(data->stack_a) == 1 || is_dup(data->stack_a) == 1)
 		return (ft_clear(&data));
-	if (stack_length == 2)
-		exec_save("sa", data);
+	if (stack_length(data->stack_a) == 2)
+		exec_instruction("sa", data);
+	else if (stack_length(data->stack_a) == 3)
+		sort_3(data);
     print_list(data->stack_a);
 	// printlist_cmds(data->cmd_list);
 	ft_clear(&data);

@@ -67,6 +67,7 @@ t_node	*fill_stacks(char **argv, int argc)
 
 	i = 1;
 	tmp = NULL;
+	tmp->stack_size_a = 0;
 	while (argv[i])
 	{
 		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
@@ -77,6 +78,7 @@ t_node	*fill_stacks(char **argv, int argc)
 	while (i < argc)
 	{
 		add_back(&(tmp), create_new_node(ft_atoi(argv[i])));
+		tmp->stack_size_a++;
 		// adds node while remembering where it last was pointing at
 		i++;
 	}

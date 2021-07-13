@@ -47,6 +47,41 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
+int	is_correct(char *str)
+{
+	int		i;
+
+	i = 0;
+	if ((str[0] == '-' || str[0] == '+') && str[1] == '\0')
+		return (0);
+	if (str[0] == '-' || str[0] == '+')
+		str++;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int		correct_input(char **tab)
+{
+	int		i;
+
+	i = 1;
+	while (tab[i])
+	{
+		if (is_correct(tab[i]) == 0)
+		{
+			write(2, "Error\n", 6);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
 t_node	*ft_listlast(t_node *list)
 {
 	if (!list)
