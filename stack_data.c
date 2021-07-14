@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amaghat <amaghat@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 20:14:57 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/13 21:07:42 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/14 01:07:47 by amaghat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,18 @@ void	print_list(t_node *head)
 	}
 }
 
+void	print_instruction_list(t_node *head)
+{
+	t_node	*tmp;
+
+	tmp = head;
+	while (tmp != NULL)
+	{
+		printf("%s\n", tmp->instruction);
+		tmp = tmp->next;
+	}
+}
+
 void	add_back(t_node **head, t_node *to_insert)
 {
 	to_insert->next = NULL;
@@ -60,7 +72,7 @@ void	add_back(t_node **head, t_node *to_insert)
 }
 
 
-t_node	*fill_stacks(char **argv, int argc)
+t_node	*fill_stacks(char **argv, int argc, t_data **data)
 {
 	int i;
 	t_node *tmp;
@@ -70,7 +82,10 @@ t_node	*fill_stacks(char **argv, int argc)
 	while (argv[i])
 	{
 		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
+		{
 			write(2, "Error\n", 6);
+			ft_clear(data);
+		}
 		i++;
 	}
 	i = 1;

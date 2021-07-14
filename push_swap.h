@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amaghat <amaghat@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:06:46 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/13 21:06:15 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/14 04:13:15 by amaghat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 # include <ctype.h>
 # include <limits.h>
 # include <string.h>
+# include <math.h>
 
 typedef struct s_node
 {
 	int				value;
 	char			*instruction;
-	int				stack_size_a;
-	int				stack_size_b;
+	int				chunk;
 	struct s_node	*next;
 }				t_node;
 
@@ -36,13 +36,14 @@ typedef struct s_data
 	t_node	*instruction_list;
 }               t_data;
 
+void		print_instruction_list(t_node *head);
 int			find_lowest(t_node *stack);
 t_node		*ft_listlast(t_node *list);
 int			ft_isdigit(int c);
 long long	ft_atoi(const char *str);
 int			ft_clear(t_data **data);
 void		init_data(t_data *data);
-t_node		*fill_stacks(char **argv, int argc);
+t_node		*fill_stacks(char **argv, int argc, t_data **data);
 void		print_list(t_node *head);
 void		exec_instruction(char *str, t_data *data);
 void		add_back(t_node **head, t_node *to_insert);
@@ -52,6 +53,8 @@ int			find_highest(t_node *stack);
 void		sort_3(t_data *data);
 int			stack_length(t_node	*stack);
 int			ft_strcmp(char *s, char *comp);
+// int    	smart_push(t_data *data, int i, int j);
+void     	midpoint_finder_a(int argc, char **argv);
 void		pa(t_data *data);
 void		pb(t_data *data);
 void		sa(t_data *data);

@@ -59,11 +59,11 @@ int	find_lowest(t_node *stack)
 	int		i;
 
 	tmp = stack;
-	i = 1;
+	i = 0;
 	lowest = 2147483647;
 	while (tmp != NULL)
 	{
-		if (tmp->value > lowest)
+		if (tmp->value < lowest)
 			lowest = tmp->value;
 		tmp = tmp->next;
 	}
@@ -75,5 +75,5 @@ int	find_lowest(t_node *stack)
 		tmp = tmp->next;
 		i++;
 	}
-	return (0);
+	return (-1);
 }

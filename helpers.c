@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amaghat <amaghat@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 20:07:51 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/12 20:38:28 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/14 01:05:38 by amaghat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ long long	ft_atoi(const char *str)
 {
 	int				i;
 	int				sign;
-	unsigned long	ret;
+	unsigned long long	ret;
 
 	ret = 0;
 	sign = 1;

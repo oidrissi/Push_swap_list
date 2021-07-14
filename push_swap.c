@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amaghat <amaghat@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:11:15 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/13 21:54:16 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/14 04:13:46 by amaghat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,6 @@ int		is_dup(t_node *stack)
 	return (0);
 }
 
-// void	sort(t_data *data)
-// {
-	
-// }
-
 int		main(int	argc, char	**argv)
 {
 	t_data	*data;
@@ -67,23 +62,26 @@ int		main(int	argc, char	**argv)
 	data = malloc(sizeof(t_data));
 	init_data(data);
 	if (argc == 1 || argc == 2 || !correct_input(argv))
+	{
 		return (ft_clear(&data));
-	data->stack_a = fill_stacks(argv, argc);
+	}
+	data->stack_a = fill_stacks(argv, argc, &data);
 	if (is_sorted(data->stack_a) == 1 || is_dup(data->stack_a) == 1)
 		return (ft_clear(&data));
 	if (stack_length(data->stack_a) == 2)
 		exec_instruction("sa", data);
-	else if (stack_length(data->stack_a) == 3)
+	if (stack_length(data->stack_a) == 3)
 		sort_3(data);
-	else if (stack_length(data->stack_a) == 4)
+	if (stack_length(data->stack_a) == 4)
 		sort_4(data);
-	// else if (stack_length(data->stack_a) > 5)
-	// 	sort(data);
-	printf("STACK A:\n");
-    print_list(data->stack_a);
-	printf("STACK B:\n");
-	print_list(data->stack_b);
-	// printlist_cmds(data->cmd_list);
+	if (stack_length(data->stack_a) >= 5)
+		midpoint_finder_a(argc, argv);
+		// sort(data);
+	// printf("STACK A:\n");
+    // print_list(data->stack_a);
+	// printf("STACK B:\n");
+	// print_list(data->stack_b);
+	print_instruction_list(data->instruction_list);
 	ft_clear(&data);
 	return (1);
 }
