@@ -112,7 +112,25 @@ void bubblesort(int array[], int n)
 	}
 }   
 
-int	ft_len_chunk(t_node *stack)
+int	chunk_sorted(t_node *node)
+{
+	int		chunk;
+	t_node	*tmp;
+
+	if (!node)
+		return (0);
+	tmp = node;
+	chunk = node->chunk;
+	while (tmp->next && tmp->chunk == chunk)
+	{
+		if (tmp->value > tmp->next->value)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
+int	len_chunk(t_node *stack)
 {
 	int		len;
 	int		chunk;
@@ -129,47 +147,201 @@ int	ft_len_chunk(t_node *stack)
 	return (len);
 }
 
-void     midpoint_finder(t_node *stack)
+int	midpoint_finder(t_node *stack)
 {
-	int		chunk;
 	int		*array;
 	int		i;
-    int     j;
 	int		midpoint;
+	int		chunk;
 	t_node	*tmp;
 
 	i = 0;
 	tmp = stack;
 	chunk = stack->chunk;
-	array = (int *)malloc(sizeof(int) * stack_length(stack));
+	array = (int *)malloc(sizeof(int) * len_chunk(stack));
 	while (tmp && tmp->chunk == chunk)
 	{
-		array[i] = tmp->value;
-        printf("%d\n", array[i]);
+		array[i++] = tmp->value;
 		tmp = tmp->next;
-        i++;
 	}
-	bubblesort(array, ft_len_chunk(tmp));
-	midpoint = array[ft_len_chunk(stack) / 2];
+	bubblesort(array, len_chunk(stack));
+	midpoint = array[(len_chunk(stack) / 2)];
 	free(array);
-	//return (midpoint);
+	return (midpoint);
+}
+
+int	a_to_b(t_data *data, int midpoint, int part)
+{
+	if (data->stack_a->value < midpoint)
+	{
+		exec_instruction("pb", data);
+		data->stack_b->chunk = part;
+		return (0);
+	}
+	return (1);
+}
+
+int		higher_than_midpoint(t_node *node, int midpoint)
+{
+	int		part;
+	t_node	*tmp;
+
+	part = node->chunk;
+	tmp = node;
+	while (tmp && tmp->chunk == part)
+	{
+		if (tmp->value > midpoint)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+int		lower_than_midpoint(t_node *node, int midpoint)
+{
+	int		part;
+	t_node	*tmp;
+
+	part = node->chunk;
+	tmp = node;
+	while (tmp && tmp->chunk == part)
+	{
+		if (tmp->value > midpoint)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+void	smart_push_rotate(t_data *data, int rot)
+{
+	int	midpoint;
+	int	chunk;
+	int	nra;
+
+	chunk = data->stack_a->chunk;
+	while (!is_sorted(data->stack_a)
+		&& len_chunk(data->stack_a) > 2)
+	{
+		chunk++;
+		nra = 0;
+		midpoint = midpoint_finder(data->stack_a);
+		while (lower_than_midpoint(data->stack_a, midpoint))
+		{
+			if (a_to_b(data, midpoint, chunk))
+			{
+				exec_instruction("ra", data);
+				nra++;
+			}
+		}
+		while (!rot && nra--)
+			exec_instruction("rra", data);
+	}
+	if (!chunk_sorted(data->stack_a) && len_chunk(data->stack_a) == 2)
+		exec_instruction("sa", data);
+}
+
+void	finish_chunk(t_data *data, t_node *tmp)
+{
+	if (tmp->next && tmp->value < tmp->next->value)
+		exec_instruction("sb", data);
+	exec_instruction("pa", data);
+	exec_instruction("pa", data);
+}
+
+void	iter_btoa(t_data *data)
+{
+	int	midpoint;
+	int	nrb;
+
+	nrb = 0;
+	midpoint = midpoint_finder(data->stack_b);
+	while (higher_than_midpoint(data->stack_b, midpoint))
+	{
+		if (data->stack_b->value > midpoint)
+		{
+			exec_instruction("pa", data);
+			data->stack_a->chunk++;
+			data->stack_a->chunk++;
+		}
+		else
+		{
+			exec_instruction("rb", data);
+			nrb++;
+		}
+	}
+	while (nrb--)
+		exec_instruction("rrb", data);
+	smart_push_rotate(data, 0);
+}
+
+void	ft_rev_pushrot(t_data *data)
+{
+	t_node	*tmp;
+	int		part;
+
+	tmp = data->stack_b;
+	part = tmp->chunk;
+	while (tmp && tmp->chunk == part)
+	{
+		if (len_chunk(data->stack_b) == 1)
+		{
+			exec_instruction("pa", data);
+			tmp = data->stack_b;
+		}
+		else if (len_chunk(data->stack_b) == 2)
+		{
+			finish_chunk(data, tmp);
+			tmp = data->stack_b;
+		}
+		else
+		{
+			iter_btoa(data);
+			tmp = data->stack_b;
+		}
+		if (tmp)
+			tmp = tmp->next;
+	}
 }
 
 void	sort(t_data *data)
 {
-	t_node *tmp;
-
-	tmp = data->stack_a;
-	midpoint_finder(tmp);
-	// while (tmp)
-	// {
-	// 	if (tmp->value < midpoint_finder(tmp))
-	// 		exec_instruction("pb", data);
-    //     // printf("Second Midpoint is: %d\n" ,midpoint_finder(argv, argc));
-	// 	tmp = tmp->next;
-	// }
-	// update(argv);
+	while (!is_sorted(data->stack_a)
+		|| stack_length(data->stack_a) != data->nb_elements)
+	{
+		if (is_sorted(data->stack_a) && !data->stack_b)
+			return ;
+		else
+		{
+			if (!is_sorted(data->stack_a))
+				smart_push_rotate(data, 1);
+			else
+				ft_rev_pushrot(data);
+		}
+	}
 }
+
+// void	sort(t_data *data)
+// {
+// 	t_node *tmp;
+//     int     j;
+
+// 	tmp = data->stack_a;
+// 	while (!is_sorted(data->stack_a) || stack_length(data->stack_a))
+// 	{
+
+// 	}
+// 	smart_push_rotate(data, )
+//     printf("%d", j);
+// 	// while (tmp)
+// 	// {
+// 	// 	if (tmp->value < midpoint_finder(tmp))
+// 	// 		exec_instruction("pb", data);
+//     //     // printf("Second Midpoint is: %d\n" ,midpoint_finder(argv, argc));
+// 	// 	tmp = tmp->next;
+// 	// }
+// 	// update(argv);
+// }
 
 // void    sort(t_data *data, int argc)
 // {

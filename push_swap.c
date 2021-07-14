@@ -6,7 +6,7 @@
 /*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:11:15 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/14 06:55:28 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/14 10:32:56 by oidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		main(int	argc, char	**argv)
 	
 	data = malloc(sizeof(t_data));
 	init_data(data);
+	data->nb_elements = argc - 1;
 	if (argc == 1 || argc == 2 || !correct_input(argv))
 	{
 		return (ft_clear(&data));

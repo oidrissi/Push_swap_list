@@ -6,7 +6,7 @@
 /*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:06:46 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/14 07:07:56 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/14 10:32:19 by oidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_data
 	t_node	*stack_a;
 	t_node	*stack_b;
 	t_node	*instruction_list;
+	int		nb_elements;
 }               t_data;
 
 void		print_instruction_list(t_node *head);
@@ -53,8 +54,9 @@ int			find_highest(t_node *stack);
 void		sort_3(t_data *data);
 int			stack_length(t_node	*stack);
 int			ft_strcmp(char *s, char *comp);
+void		smart_push_rotate(t_data *data, int rot);
 // int    	smart_push(t_data *data, int i, int j);
-void     	midpoint_finder(t_node *stack);
+int     	midpoint_finder(t_node *stack);
 void		pa(t_data *data);
 void		pb(t_data *data);
 void		sa(t_data *data);
