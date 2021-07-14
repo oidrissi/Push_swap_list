@@ -36,67 +36,6 @@ void	sort_3(t_data *data)
 	}
 }
 
-int	fastest_to_top(t_data *data, int *i, int pos, int j)
-{
-	int	len;
-
-	if (j == 0)
-		len = stack_length(data->stack_a);
-	else
-		len = stack_length(data->stack_b);
-	*i = 0;
-	if (pos <= len / 2)
-	{
-		*i = pos - 1;
-		return (1);
-	}
-	else
-	{
-		*i = len - pos + 1;
-		return (0);
-	}
-}
-
-// int    smart_push(t_data *data, int i, int j)
-// {
-//     int     least_moves1;
-//     int     least_moves2;
-
-//     least_moves1 = 0;
-//     least_moves2 = 0;
-//     while (i > 0)
-//     {
-//         i--;
-//         least_moves1++;
-//     }
-//     while (j < stack_length(data->stack_a))
-//     {
-//         j++;
-//         least_moves2++;
-//     }
-//     if (least_moves1 > least_moves2)
-//     {
-//         while (least_moves2 > 0)
-//         {
-//             exec_instruction("rra", data);
-//             least_moves2--;
-//         }
-//         return (1);
-//         exec_instruction("pb", data);
-//     }
-//     else
-//     {
-//         while(least_moves1 > 0)
-//         {
-//             exec_instruction("ra", data);
-//             least_moves1--;
-//         }
-//         exec_instruction("pb", data);
-//         return(2);
-//     }
-//     return (0);
-// }
-
 int     move_lowest_to_top(t_data *data)
 {
     int     moves_up;
@@ -186,7 +125,6 @@ int    midpoint_finder_a(char **argv, int argc)
         i++;
     }
     bubbleSort(table, argc);
-	//sorted, we now look for the midpoint in our table = i / 2;
 	mid = table[(argc - 1) / 2];
 	return (mid);
 }
@@ -196,12 +134,17 @@ void	sort(t_data *data, char **argv, int argc)
 	t_node *tmp;
 
 	tmp = data->stack_a;
+	printf("Midpoint is: %d\n" ,midpoint_finder_a(argv, argc));
 	while (tmp)
 	{
 		if (tmp->value < midpoint_finder_a(argv, argc))
-			exec_instruction("pa", data);
+		{
+			exec_instruction("pb", data);
+			argv++;
+		}
 		tmp = tmp->next;
 	}
+	// update(argv);
 }
 
 // void    sort(t_data *data, int argc)
