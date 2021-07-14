@@ -173,7 +173,7 @@ void bubbleSort(int array[], int n)
 	}
 }   
 
-int    sort_converted_table(char **argv, int argc)
+int    midpoint_finder_a(char **argv, int argc)
 {
     int		table[argc - 1];
     int		i;
@@ -191,19 +191,17 @@ int    sort_converted_table(char **argv, int argc)
 	return (mid);
 }
 
-void     midpoint_finder_a(int argc, char **argv)
+void	sort(t_data *data, char **argv, int argc)
 {
-    // t_node *tmp;
-    // int     total;
-    int     mid;
+	t_node *tmp;
 
-	mid = sort_converted_table(argv, argc);
-	printf("MID is element number: %d\n", mid);
-}
-
-void	sort(t_data *data, char **argv, int argc);
-{
-	
+	tmp = data->stack_a;
+	while (tmp)
+	{
+		if (tmp->value < midpoint_finder_a(argv, argc))
+			exec_instruction("pa", data);
+		tmp = tmp->next;
+	}
 }
 
 // void    sort(t_data *data, int argc)

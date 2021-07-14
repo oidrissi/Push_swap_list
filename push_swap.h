@@ -6,7 +6,7 @@
 /*   By: amaghat <amaghat@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:06:46 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/14 04:13:15 by amaghat          ###   ########.fr       */
+/*   Updated: 2021/07/14 04:45:19 by amaghat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		sort_3(t_data *data);
 int			stack_length(t_node	*stack);
 int			ft_strcmp(char *s, char *comp);
 // int    	smart_push(t_data *data, int i, int j);
-void     	midpoint_finder_a(int argc, char **argv);
+int     	midpoint_finder_a(char **argv, int argc);
 void		pa(t_data *data);
 void		pb(t_data *data);
 void		sa(t_data *data);
@@ -65,6 +65,7 @@ void		rra(t_data *data);
 void		rb(t_data *data);
 void		rrb(t_data *data);
 void    	sort_4(t_data *data);
+void		sort(t_data *data, char **argv, int argc);
 // void		rr(t_data *data);
 // void		rrr(t_data *data);
 
