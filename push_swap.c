@@ -6,7 +6,7 @@
 /*   By: amaghat <amaghat@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:11:15 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/14 04:13:46 by amaghat          ###   ########.fr       */
+/*   Updated: 2021/07/14 04:40:47 by amaghat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		main(int	argc, char	**argv)
 	if (stack_length(data->stack_a) == 4)
 		sort_4(data);
 	if (stack_length(data->stack_a) >= 5)
-		midpoint_finder_a(argc, argv);
+		sort(data, argc, argv); // WORK IN PROGRESS
 		// sort(data);
 	// printf("STACK A:\n");
     // print_list(data->stack_a);

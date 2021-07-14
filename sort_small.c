@@ -180,14 +180,14 @@ int    sort_converted_table(char **argv, int argc)
 	int 	mid;
 
     i = 1;
-    while (i < argc - 1)
+    while (i <= argc - 1)
     {
         table[i - 1] = ft_atoi(argv[i]);
         i++;
     }
     bubbleSort(table, argc);
 	//sorted, we now look for the midpoint in our table = i / 2;
-	mid = table[i / 2];
+	mid = table[(argc - 1) / 2];
 	return (mid);
 }
 
@@ -199,6 +199,11 @@ void     midpoint_finder_a(int argc, char **argv)
 
 	mid = sort_converted_table(argv, argc);
 	printf("MID is element number: %d\n", mid);
+}
+
+void	sort(t_data *data, char **argv, int argc);
+{
+	
 }
 
 // void    sort(t_data *data, int argc)
