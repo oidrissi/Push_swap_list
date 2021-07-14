@@ -158,14 +158,14 @@ int	midpoint_finder(t_node *stack)
 	i = 0;
 	tmp = stack;
 	chunk = stack->chunk;
-	array = (int *)malloc(sizeof(int) * len_chunk(stack));
-	while (tmp && tmp->chunk == chunk)
+	array = (int *)malloc(sizeof(int) * stack_length(stack));
+	while (tmp)
 	{
 		array[i++] = tmp->value;
 		tmp = tmp->next;
 	}
-	bubblesort(array, len_chunk(stack));
-	midpoint = array[(len_chunk(stack) / 2)];
+	bubblesort(array, stack_length(stack));
+	midpoint = array[stack_length(stack) / 2];
 	free(array);
 	return (midpoint);
 }
@@ -306,19 +306,12 @@ void	ft_rev_pushrot(t_data *data)
 
 void	sort(t_data *data)
 {
-	while (!is_sorted(data->stack_a)
-		|| stack_length(data->stack_a) != data->nb_elements)
-	{
-		if (is_sorted(data->stack_a) && !data->stack_b)
-			return ;
-		else
-		{
-			if (!is_sorted(data->stack_a))
-				smart_push_rotate(data, 1);
-			else
-				ft_rev_pushrot(data);
-		}
-	}
+	// int	j;
+	// t_node *tmp;
+
+	// tmp = data->stack_a;
+	data->stack_a->chunk = 0;
+	printf("%d", midpoint_finder(data->stack_a));
 }
 
 // void	sort(t_data *data)
