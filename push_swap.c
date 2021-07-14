@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaghat <amaghat@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:11:15 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/14 04:50:46 by amaghat          ###   ########.fr       */
+/*   Updated: 2021/07/14 06:55:28 by oidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,12 @@ int		main(int	argc, char	**argv)
 	if (stack_length(data->stack_a) == 4)
 		sort_4(data);
 	if (stack_length(data->stack_a) >= 5)
-		sort(data, argv, argc); // WORK IN PROGRESS
+		sort(data); // WORK IN PROGRESS
 		// sort(data);
-	printf("STACK A:\n");
-    print_list(data->stack_a);
-	printf("STACK B:\n");
-	print_list(data->stack_b);
+	// printf("STACK A:\n");
+    // print_list(data->stack_a);
+	// printf("STACK B:\n");
+	// print_list(data->stack_b);
 	print_instruction_list(data->instruction_list);
 	ft_clear(&data);
 	return (1);

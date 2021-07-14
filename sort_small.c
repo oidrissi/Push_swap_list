@@ -93,7 +93,7 @@ void swap(int *a, int *b)
 	*b = temp; 
 }  
 
-void bubbleSort(int array[], int n) 
+void bubblesort(int array[], int n) 
 { 
     int	i;
 	int	j;
@@ -112,38 +112,62 @@ void bubbleSort(int array[], int n)
 	}
 }   
 
-int    midpoint_finder_a(char **argv, int argc)
+int	ft_len_chunk(t_node *stack)
 {
-    int		table[argc - 1];
-    int		i;
-	int 	mid;
+	int		len;
+	int		chunk;
+	t_node	*tmp;
 
-    i = 1;
-    while (i <= argc - 1)
-    {
-        table[i - 1] = ft_atoi(argv[i]);
-        i++;
-    }
-    bubbleSort(table, argc);
-	mid = table[(argc - 1) / 2];
-	return (mid);
+	len = 0;
+	tmp = stack;
+	chunk = stack->chunk;
+	while (tmp && tmp->chunk == chunk)
+	{
+		len++;
+		tmp = tmp->next;
+	}
+	return (len);
 }
 
-void	sort(t_data *data, char **argv, int argc)
+void     midpoint_finder(t_node *stack)
+{
+	int		chunk;
+	int		*array;
+	int		i;
+    int     j;
+	int		midpoint;
+	t_node	*tmp;
+
+	i = 0;
+	tmp = stack;
+	chunk = stack->chunk;
+	array = (int *)malloc(sizeof(int) * stack_length(stack));
+	while (tmp && tmp->chunk == chunk)
+	{
+		array[i] = tmp->value;
+        printf("%d\n", array[i]);
+		tmp = tmp->next;
+        i++;
+	}
+	bubblesort(array, ft_len_chunk(tmp));
+	midpoint = array[ft_len_chunk(stack) / 2];
+	free(array);
+	//return (midpoint);
+}
+
+void	sort(t_data *data)
 {
 	t_node *tmp;
 
 	tmp = data->stack_a;
-	printf("Midpoint is: %d\n" ,midpoint_finder_a(argv, argc));
-	while (tmp)
-	{
-		if (tmp->value < midpoint_finder_a(argv, argc))
-		{
-			exec_instruction("pb", data);
-			argv++;
-		}
-		tmp = tmp->next;
-	}
+	midpoint_finder(tmp);
+	// while (tmp)
+	// {
+	// 	if (tmp->value < midpoint_finder(tmp))
+	// 		exec_instruction("pb", data);
+    //     // printf("Second Midpoint is: %d\n" ,midpoint_finder(argv, argc));
+	// 	tmp = tmp->next;
+	// }
 	// update(argv);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaghat <amaghat@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:06:46 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/14 05:01:04 by amaghat          ###   ########.fr       */
+/*   Updated: 2021/07/14 07:07:56 by oidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		sort_3(t_data *data);
 int			stack_length(t_node	*stack);
 int			ft_strcmp(char *s, char *comp);
 // int    	smart_push(t_data *data, int i, int j);
-int     	midpoint_finder_a(char **argv, int argc);
+void     	midpoint_finder(t_node *stack);
 void		pa(t_data *data);
 void		pb(t_data *data);
 void		sa(t_data *data);
@@ -65,7 +65,7 @@ void		rra(t_data *data);
 void		rb(t_data *data);
 void		rrb(t_data *data);
 void    	sort_4(t_data *data);
-void		sort(t_data *data, char **argv, int argc);
+void		sort(t_data *data);
 // void		rr(t_data *data);
 // void		rrr(t_data *data);
 
