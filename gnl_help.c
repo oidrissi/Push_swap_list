@@ -13,83 +13,72 @@
 #include "gnl.h"
 #include "push_swap.h"
 
-size_t		ft_strlen(const char *str)
+size_t		ft_strlen(const char *s)
 {
 	int i;
 
 	i = 0;
-	while (str[i])
-	{
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
 		i++;
-	}
 	return (i);
 }
 
-char		*ft_strchr(const char *s, int c)
+void		*ft_memmove(void *dst, const void *src, size_t len)
 {
-	while (*s)
-	{
-		if ((char)c == *s)
-			return ((char *)s);
-		s++;
-	}
-	if ((char)c == *s)
-		return ((char *)s);
-	return (NULL);
-}
+	char *d;
+	char *s;
 
-void		*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	char		*v;
-	const char	*s;
-
-	if (dst == NULL && src == NULL)
-		return (NULL);
+	d = (char *)dst;
+	s = (char *)src;
 	if (dst == src)
-		return (NULL);
-	v = (char *)dst;
-	s = (const char *)src;
-	if (!dst && !src)
-		return (NULL);
-	while (n-- > 0)
-		*v++ = *s++;
+		return (dst);
+	if (s < d)
+	{
+		while (len--)
+			*(d + len) = *(s + len);
+		return (dst);
+	}
+	while (len--)
+		*d++ = *s++;
 	return (dst);
 }
 
-char		*ft_strdup(const char *s)
+char		*join_str(char const *s1, char const *s2)
 {
-	char	*ptr;
-	size_t	i;
+	size_t	s1_len;
+	size_t	s2_len;
+	size_t	stot_len;
+	char	*rtn;
 
-	if (!s)
-		return (NULL);
-	i = ft_strlen(s) + 1;
-	ptr = (char *)malloc(sizeof(char) * i);
-	return (ptr ? ft_memcpy(ptr, s, i) : NULL);
+	if (!s1 && !s2)
+		return (0);
+	s1_len = ft_strlen((char *)s1);
+	s2_len = ft_strlen((char *)s2);
+	stot_len = s1_len + s2_len + 1;
+	rtn = malloc(sizeof(char) * stot_len);
+	if (!rtn)
+		return (0);
+	ft_memmove(rtn, s1, s1_len);
+	ft_memmove(rtn + s1_len, s2, s2_len);
+	rtn[stot_len - 1] = '\0';
+	free((char *)s1);
+	return (rtn);
 }
 
-char		*ft_strjoin(char const *s1, char const *s2)
+int			has_return(char *str)
 {
-	char	*p;
-	int		i;
-	int		j;
+	int i;
 
 	i = 0;
-	j = 0;
-	if ((!s1 && !s2) || !s1)
+	if (!str)
 		return (0);
-	if (!(p = malloc(sizeof(char *) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
-		return (0);
-	while (s1[i] != '\0')
+	while (str[i])
 	{
-		p[i] = s1[i];
+		if (str[i] == '\n')
+			return (1);
 		i++;
 	}
-	while (s2[j] != '\0')
-	{
-		p[i++] = s2[j];
-		j++;
-	}
-	p[i] = '\0';
-	return (p);
+	return (0);
 }

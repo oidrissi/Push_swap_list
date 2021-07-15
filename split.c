@@ -12,33 +12,33 @@
 
 #include "push_swap.h"
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*a;
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	k;
+	char			*p;
+	int				i;
+	unsigned int	bigg;
 
-	if (!s)
-		return (NULL);
-	k = ft_strlen((char *)s);
 	i = 0;
-	if (start > k)
-		return (ft_strdup(""));
-	if (!(a = (char *)malloc((sizeof(char) * (len + 1)))))
-		return (0);
-	while (i < start)
-		i++;
-	j = 0;
-	while (s[i] && (len--))
+	bigg = start;
+	if (!s || start > ft_strlen(s))
 	{
-		a[j] = s[i];
-		i++;
-		j++;
+		p = malloc(1 * sizeof(char));
+		p[0] = '\0';
+		return (p);
 	}
-	a[j] = '\0';
-	return ((char *)a);
+	p = malloc((len + 1) * sizeof(char));
+	if (p == 0)
+		return (NULL);
+	while (start < (unsigned int)len + bigg && s[start])
+	{
+		p[i] = s[start];
+		start++;
+		i++;
+	}
+	p[i] = '\0';
+	return (p);
 }
+
 static	size_t	ft_countw(char *s, char c)
 {
 	size_t	i;

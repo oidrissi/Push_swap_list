@@ -12,19 +12,14 @@
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define FD_SIZE 1024
 # define BUFFER_SIZE 10
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 
-int		get_next_line(const int fd, char **line);
-char	*ft_strchr(const char *s, int c);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_substr(const char *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *s);
-size_t	ft_strlen(const char *str);
+int         get_next_line(int fd, char **line);
+int			has_return(char *str);
+size_t		ft_strlen(const char *s);
+char		*join_str(const char *s1, const char *s2);
 
 #endif

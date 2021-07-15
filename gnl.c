@@ -13,69 +13,81 @@
 #include "gnl.h"
 #include "push_swap.h"
 
-static int	get_line(char **s, char **line)
+char	*get_save(char *save)
 {
+	char	*rtn;
 	int		i;
-	char	*saved;
+	int		j;
 
 	i = 0;
-	while (*s && (*s)[i] != '\n' && (*s)[i] != '\0')
+	j = 0;
+	if (!save)
+		return (0);
+	while (save[i] && save[i] != '\n')
 		i++;
-	if (*s && (*s)[i] == '\n')
+	if (!save[i])
 	{
-		*line = ft_substr(*s, 0, i);
-		saved = ft_strdup(&((*s)[i + 1]));
-		free(*s);
-		*s = saved;
-	}
-	else
-	{
-		*line = ft_strdup(*s);
-		free(*s);
-		*s = NULL;
+		free(save);
 		return (0);
 	}
-	return (1);
-}
-
-static int	helper(char **s, char **line, int l, int fd)
-{
-	if (l < 0)
-		return (-1);
-	else if (l == 0 && s[fd] == NULL)
-	{
-		*line = ft_strdup("");
+	if (!(rtn = malloc(sizeof(char) * ((ft_strlen(save) - i) + 1))))
 		return (0);
-	}
-	else
-		return (get_line(&s[fd], line));
+	i++;
+	while (save[i])
+		rtn[j++] = save[i++];
+	rtn[j] = '\0';
+	free(save);
+	return (rtn);
 }
 
-int			get_next_line(int fd, char **line)
+char	*get_line(char *str)
 {
-	int			l;
-	static char	*s[FD_SIZE];
-	char		*buff;
-	char		*saved;
+	int		i;
+	char	*rtn;
 
-	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0 ||
-			(!(buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1)))))
-		return (-1);
-	while ((l = read(fd, buff, BUFFER_SIZE)) > 0)
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (!(rtn = malloc(sizeof(char) * (i + 1))))
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '\n')
 	{
-		buff[l] = '\0';
-		if (s[fd] == NULL)
-			s[fd] = ft_strdup(buff);
-		else
+		rtn[i] = str[i];
+		i++;
+	}
+	rtn[i] = '\0';
+    free(rtn);
+	return (rtn);
+}
+
+int		get_next_line(int fd, char **line)
+{
+	char			*buff;
+	static char		*save;
+	int				reader;
+
+	reader = 1;
+	if (fd < 0 || !line || BUFFER_SIZE <= 0)
+		return (-1);
+	if (!(buff = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		return (-1);
+	while (!has_return(save) && reader != 0)
+	{
+		if ((reader = read(fd, buff, BUFFER_SIZE)) == -1)
 		{
-			if (!(saved = ft_strjoin(s[fd], buff)))
-				return (-1);
-			free(s[fd]);
-			s[fd] = saved;
+			free(buff);
+			return (-1);
 		}
-		if (ft_strchr(s[fd], '\n'))
-			break ;
+		buff[reader] = '\0';
+		save = join_str(save, buff);
 	}
 	free(buff);
-	return (helper(s, line, l, fd));
+	*line = get_line(save);
+	save = get_save(save);
+	if (reader == 0)
+		return (0);
+	return (1);
 }
