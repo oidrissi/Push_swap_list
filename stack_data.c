@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 20:14:57 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/15 01:27:29 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/15 04:12:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ t_node	*fill_stacks(char **argv, int argc, t_data **data)
 	{
 		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
 		{
-			write(2, "Error\n", 6);
+			ft_puterror("Error\n", data);
 			ft_clear(data);
 		}
 		i++;
@@ -92,7 +92,6 @@ t_node	*fill_stacks(char **argv, int argc, t_data **data)
 	while (i < argc)
 	{
 		add_back(&(tmp), create_new_node(ft_atoi(argv[i])));
-		// adds node while remembering where it last was pointing at
 		i++;
 	}
 	return (tmp);

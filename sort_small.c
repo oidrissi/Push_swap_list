@@ -305,7 +305,6 @@ void	ft_rev_pushrot(t_data *data)
 
 void	sort(t_data *data)
 {
-	printf("mid is : %d\n", midpoint_finder(data->stack_a));
 	while (!is_sorted(data->stack_a)
 		|| stack_length(data->stack_a) != data->nb_elements)
 	{

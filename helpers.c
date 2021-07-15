@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 20:07:51 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/15 02:19:14 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/15 04:16:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,29 @@
 
 long long	ft_atoi(const char *str)
 {
-	int				i;
-	int				sign;
-	unsigned long long	ret;
+	unsigned long long	num;
+	int					sign;
+	int					i;
 
-	ret = 0;
-	sign = 1;
 	i = 0;
-	while (*(str + i) == '\n' ||
-		*(str + i) == '\t' ||
-		*(str + i) == '\r' ||
-		*(str + i) == '\v' ||
-		*(str + i) == '\f' ||
-		*(str + i) == ' ')
+	num = 0;
+	sign = 1;
+	while (str[i] == '\n'
+		|| str[i] == '\t'
+		|| str[i] == '\r'
+		|| str[i] == '\v'
+		|| str[i] == '\f'
+		|| str[i] == ' ')
 		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= 48 && str[i] <= 57)
+	if (str[i] == '-' || str[i] == '+')
 	{
-		ret = ret * 10 + (str[i] - 48);
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	return (ret * sign);
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+		num = num * 10 + str[i++] - '0';
+	return (num * sign);
 }
 
 int	ft_isdigit(int c)
@@ -65,7 +64,7 @@ int	is_correct(char *str)
 	return (1);
 }
 
-int		correct_input(char **tab)
+int		correct_input(char **tab, t_data *data)
 {
 	int		i;
 
@@ -73,10 +72,7 @@ int		correct_input(char **tab)
 	while (tab[i])
 	{
 		if (is_correct(tab[i]) == 0)
-		{
-			write(2, "Error\n", 6);
-			return (0);
-		}
+			ft_puterror("Error\n", &data);
 		i++;
 	}
 	return (1);
@@ -89,4 +85,28 @@ t_node	*ft_listlast(t_node *list)
 	while (list->next)
 		list = list->next;
 	return (list);
+}
+
+void	ft_puterror(char *error, t_data **data)
+{
+	ft_clear(data);
+	ft_putstr_fd(error, 2);
+	exit(-1);
+}
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (s)
+	{
+		while (*s)
+		{
+			ft_putchar_fd(*s, fd);
+			s++;
+		}
+	}
 }

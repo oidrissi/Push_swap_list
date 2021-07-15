@@ -34,10 +34,10 @@ void	exec(char *str, t_data *data)
 		rra(data);
 	else if (!(ft_strcmp(str, "rrb")))
 		rrb(data);
-	// else if (!(ft_strcmp(str, "rrr")))
-	// 	rrr(data);
-	// else if (!(ft_strcmp(str, "rr")))
-	// 	rr(data);
+	else if (!(ft_strcmp(str, "rrr")))
+		rrr(data);
+	else if (!(ft_strcmp(str, "rr")))
+		rr(data);
 }
 
 t_node	*create_new_node2(char *str)

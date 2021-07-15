@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotations.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 20:30:05 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/12 20:31:19 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/15 03:43:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,16 @@ void	rrb(t_data *data)
 	second_last->next = NULL;
 	last->next = data->stack_b;
 	data->stack_b = last;
+}
+
+void	rrr(t_data *data)
+{
+	rra(data);
+	rrb(data);
+}
+
+void	rr(t_data *data)
+{
+	ra(data);
+	rb(data);
 }

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:06:46 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/15 01:55:53 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/15 04:05:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,25 @@ typedef struct s_data
 }               t_data;
 
 void		print_instruction_list(t_node *head);
+int			is_sorted(t_node *stack);
 int			find_lowest(t_node *stack);
-t_node		*ft_listlast(t_node *list);
+int			find_highest(t_node *stack);
 int			ft_isdigit(int c);
+int			correct_input(char **tab, t_data *data);
+void		ft_puterror(char *error, t_data **data);
 long long	ft_atoi(const char *str);
 int			ft_clear(t_data **data);
 void		init_data(t_data *data, int argc);
 t_node		*fill_stacks(char **argv, int argc, t_data **data);
+void		ft_putstr_fd(char *s, int fd);
+t_node		*ft_listlast(t_node *list);
 void		print_list(t_node *head);
 void		exec_instruction(char *str, t_data *data);
 void		add_back(t_node **head, t_node *to_insert);
-int			is_sorted(t_node *stack);
-int			correct_input(char **tab);
-int			find_highest(t_node *stack);
 void		sort_3(t_data *data);
 int			stack_length(t_node	*stack);
 int			ft_strcmp(char *s, char *comp);
 void		smart_push_rotate(t_data *data, int rot);
-// int    	smart_push(t_data *data, int i, int j);
 int     	midpoint_finder(t_node *stack);
 void		pa(t_data *data);
 void		pb(t_data *data);
@@ -68,7 +69,7 @@ void		rb(t_data *data);
 void		rrb(t_data *data);
 void    	sort_4(t_data *data);
 void		sort(t_data *data);
-// void		rr(t_data *data);
-// void		rrr(t_data *data);
+void		rr(t_data *data);
+void		rrr(t_data *data);
 
 #endif
