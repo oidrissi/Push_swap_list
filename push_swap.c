@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:11:15 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/15 05:06:36 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/15 10:29:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,24 @@ int		is_dup(t_node *stack, t_data *data)
 	return (0);
 }
 
-int		main(int	argc, char	**argv)
-{
-	t_data	*data;
+// int		main(int	argc, char	**argv)
+// {
+// 	t_data	*data;
 	
-	data = malloc(sizeof(t_data));
-	init_data(data, argc);
-	if (argc == 1 || argc == 2 || !correct_input(argv, data))
-		return (ft_clear(&data));
-	data->stack_a = fill_stacks(argv, argc, &data);
-	if (is_sorted(data->stack_a) == 1 || is_dup(data->stack_a, data) == 1)
-		return (ft_clear(&data));
-	if (stack_length(data->stack_a) == 2)
-		exec_instruction("sa", data);
-	if (stack_length(data->stack_a) == 3)
-		sort_3(data);
-	if (stack_length(data->stack_a) >= 4)
-		sort(data);
-	print_instruction_list(data->instruction_list);
-	ft_clear(&data);
-	return (1);
-}
+// 	data = malloc(sizeof(t_data));
+// 	init_data(data, argc);
+// 	if (argc == 1 || argc == 2 || !correct_input(argv, data))
+// 		return (ft_clear(&data));
+// 	data->stack_a = fill_stacks(argv, argc, &data);
+// 	if (is_sorted(data->stack_a) == 1 || is_dup(data->stack_a, data) == 1)
+// 		return (ft_clear(&data));
+// 	if (stack_length(data->stack_a) == 2)
+// 		exec_instruction("sa", data);
+// 	if (stack_length(data->stack_a) == 3)
+// 		sort_3(data);
+// 	if (stack_length(data->stack_a) >= 4)
+// 		sort(data);
+// 	print_instruction_list(data->instruction_list);
+// 	ft_clear(&data);
+// 	return (1);
+// }

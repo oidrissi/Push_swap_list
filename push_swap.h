@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:06:46 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/15 05:22:06 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/15 10:37:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,15 @@ int			find_lowest(t_node *stack);
 int			find_highest(t_node *stack);
 int			ft_isdigit(int c);
 int			correct_input(char **tab, t_data *data);
+int			is_dup(t_node *stack, t_data *data);
 void		ft_puterror(char *error, t_data **data);
 long long	ft_atoi(const char *str);
 int			ft_clear(t_data **data);
+size_t		ft_strlen(const char *str);
+char		**ft_split(char const *s, char c);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strdup(const char *s);
+int			get_next_line(int fd, char **line);
 void		init_data(t_data *data, int argc);
 t_node		*fill_stacks(char **argv, int argc, t_data **data);
 void		ft_putstr_fd(char *s, int fd);

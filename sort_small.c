@@ -12,6 +12,32 @@
 
 #include "push_swap.h"
 
+int	find_highest(t_node *stack)
+{
+	t_node	*tmp;
+	int		highest;
+	int		i;
+
+	tmp = stack;
+	i = 1;
+	highest = -2147483648;
+	while (tmp != NULL)
+	{
+		if (tmp->value > highest)
+			highest = tmp->value;
+		tmp = tmp->next;
+	}
+	tmp = stack;
+	while (tmp)
+	{
+		if (tmp->value == highest)
+			return (i);
+		tmp = tmp->next;
+		i++;
+	}
+	return (0);
+}
+
 void	sort_3(t_data *data)
 {
 	int		i;
