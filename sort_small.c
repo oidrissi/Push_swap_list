@@ -84,3 +84,46 @@ int	midpoint_finder(t_node *stack)
 	free(array);
 	return (midpoint);
 }
+
+int		is_sorted(t_node *stack)
+{
+	t_node *list;
+	
+	list = stack;
+	while (list->next != NULL)
+	{
+		if (list->value > list->next->value)
+			return (0);
+		list = list->next;
+	}
+	return (1);
+}
+
+int		is_dup(t_node *stack, t_data *data)
+{
+	t_node	*tmp;
+	t_node	*head;
+	int		num;
+
+	head = stack;
+	while (stack)
+	{
+		tmp = head;
+		num = 0;
+		while (tmp)
+		{
+			if (tmp->value == stack->value)
+			{
+				num++;
+				if (num > 1)
+				{
+					ft_puterror("Error\n", &data);
+					return (1);
+				}
+			}
+			tmp = tmp->next;
+		}
+		stack = stack->next;
+	}
+	return (0);
+}

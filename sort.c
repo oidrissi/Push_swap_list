@@ -28,7 +28,7 @@ void	smart_push_rotate(t_data *data, int rot)
 	int	midpoint;
 	int	chunk;
 	int	nra;
-	
+
 	chunk = data->stack_a->chunk;
 	while (!is_sorted(data->stack_a)
 		&& len_chunk(data->stack_a) > 2)

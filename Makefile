@@ -10,31 +10,51 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap.a
-
-SRCS = *.c
-
-OBJECTS = $(SRCS:.c=.o)
-
 CC = gcc
+FLAGS = -Wall -Wextra -Werror
+NAME = push_swap
+NAMEB = checker
 
-CFLAGS = -Wall -Wextra -Werror
+SRC = push_swap.c\
+	  bubblesort.c\
+	  instructions.c\
+	  rotations.c\
+	  chunks.c\
+	  executioners.c\
+	  fill_stack.c\
+	  helpers_2.c\
+	  helpers.c\
+	  sort.c\
+	  sort_small.c\
+	  stack_data.c\
 
+SRCB = checker.c\
+	   bubblesort.c\
+	   instructions.c\
+	   rotations.c\
+	   chunks.c\
+	   split.c\
+	   executioners.c\
+	   fill_stack.c\
+	   helpers_2.c\
+	   helpers.c\
+	   gnl.c\
+	   gnl_help.c\
+	   sort.c\
+	   sort_small.c\
+	   stack_data.c\
 
 all: $(NAME)
 
+$(NAME): $(SRC)
+	@$(CC) $(SRC) $(FLAGS) -o $(NAME)
 
-$(NAME) : 
-		$(CC) $(CFLAGS) -c $(SRCS) -I ./
-		ar rc $(NAME) $(OBJECTS)
-		ranlib $(NAME)
-clean:
-		rm -f $(OBJECTS)
+bonus: $(NAMEB)
 
-fclean: 
-		rm -f $(OBJECTS)
-		rm -f $(NAME)
+$(NAMEB): $(SRCB)
+	@$(CC) $(SRCB) $(FLAGS) -o $(NAMEB)
+
+fclean:
+	@rm -rf $(NAME) $(NAMEB)
 
 re: fclean all
-
-bonus:
