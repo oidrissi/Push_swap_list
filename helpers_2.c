@@ -26,54 +26,27 @@ int		ft_strcmp(char *s, char *comp)
 	return (0);	
 }
 
-int	find_highest(t_node *stack)
+void	ft_puterror(char *error, t_data **data)
 {
-	t_node	*tmp;
-	int		highest;
-	int		i;
-
-	tmp = stack;
-	i = 1;
-	highest = -2147483648;
-	while (tmp != NULL)
-	{
-		if (tmp->value > highest)
-			highest = tmp->value;
-		tmp = tmp->next;
-	}
-	tmp = stack;
-	while (tmp)
-	{
-		if (tmp->value == highest)
-			return (i);
-		tmp = tmp->next;
-		i++;
-	}
-	return (0);
+	ft_clear(data);
+	ft_putstr_fd(error, 2);
+	exit(-1);
 }
 
-int	find_lowest(t_node *stack)
+void	ft_putchar_fd(char c, int fd)
 {
-	t_node	*tmp;
-	int		lowest;
-	int		i;
-
-	tmp = stack;
-	i = 0;
-	lowest = 2147483647;
-	while (tmp != NULL)
-	{
-		if (tmp->value < lowest)
-			lowest = tmp->value;
-		tmp = tmp->next;
-	}
-	tmp = stack;
-	while (tmp)
-	{
-		if (tmp->value == lowest)
-			return (i);
-		tmp = tmp->next;
-		i++;
-	}
-	return (-1);
+	write(fd, &c, 1);
 }
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	if (s)
+	{
+		while (*s)
+		{
+			ft_putchar_fd(*s, fd);
+			s++;
+		}
+	}
+}
+

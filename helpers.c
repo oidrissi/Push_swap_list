@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 20:07:51 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/15 05:20:13 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/15 10:03:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,56 +85,4 @@ t_node	*ft_listlast(t_node *list)
 	while (list->next)
 		list = list->next;
 	return (list);
-}
-
-void	ft_puterror(char *error, t_data **data)
-{
-	ft_clear(data);
-	ft_putstr_fd(error, 2);
-	exit(-1);
-}
-
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	if (s)
-	{
-		while (*s)
-		{
-			ft_putchar_fd(*s, fd);
-			s++;
-		}
-	}
-}
-
-void	swap(int *a, int *b) 
-{ 
-	int temp;
-
-	temp = *a; 
-	*a = *b; 
-	*b = temp; 
-}  
-
-void	bubblesort(int array[], int n) 
-{ 
-    int	i;
-	int	j;
-
-	i = 0;
-	while (i < n - 1)
-	{
-		j = 0;
-		while (j < n - i - 1)
-		{
-			if (array[j] > array [j + 1])
-				swap(&array[j], &array[j+1]);
-			j++;
-		}
-		i++;
-	}
 }

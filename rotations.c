@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 20:30:05 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/15 03:43:05 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/15 10:04:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,4 @@ void	rrr(t_data *data)
 {
 	rra(data);
 	rrb(data);
-}
-
-void	rr(t_data *data)
-{
-	ra(data);
-	rb(data);
 }

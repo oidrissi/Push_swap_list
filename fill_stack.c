@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 20:18:08 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/15 05:25:08 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/15 10:04:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,10 @@ int		ft_clear(t_data **data)
 	free_node(&((*data)->instruction_list));
 	free(*data);
 	return (1);
+}
+
+void	rr(t_data *data)
+{
+	ra(data);
+	rb(data);
 }
