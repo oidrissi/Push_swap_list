@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   fill_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 20:18:08 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/12 21:51:41 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/15 01:26:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_data(t_data *data)
+void	init_data(t_data *data, int argc)
 {
 	data->stack_a = NULL;
 	data->stack_b = NULL;
+	data->nb_elements = argc - 1;
 	data->instruction_list = NULL;
 }
 

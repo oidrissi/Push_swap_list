@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:06:46 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/14 10:32:19 by oidrissi         ###   ########.fr       */
+/*   Updated: 2021/07/15 01:55:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_node		*ft_listlast(t_node *list);
 int			ft_isdigit(int c);
 long long	ft_atoi(const char *str);
 int			ft_clear(t_data **data);
-void		init_data(t_data *data);
+void		init_data(t_data *data, int argc);
 t_node		*fill_stacks(char **argv, int argc, t_data **data);
 void		print_list(t_node *head);
 void		exec_instruction(char *str, t_data *data);
