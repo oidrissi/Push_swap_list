@@ -59,7 +59,6 @@ char	*get_line(char *str)
 		i++;
 	}
 	rtn[i] = '\0';
-    free(rtn);
 	return (rtn);
 }
 

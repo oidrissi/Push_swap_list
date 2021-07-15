@@ -48,7 +48,7 @@ int	is_oper(char *line)
 int	log_error(char *err, char **line, t_data **data)
 {
 	ft_clear(data);
-	ft_putstr_fd(err, 1);
+	ft_putstr_fd(err, 2);
 	free(*line);
 	return (1);
 }
@@ -58,11 +58,10 @@ int	main(int argc, char **argv)
 	char	*line;
 	t_data	*data;
 
-	if (argc <= 2)
-		return (0);
 	data = malloc(sizeof(t_data));
 	init_data(data, argc);
-	correct_input(argv, data);
+	if (argc == 1 || !correct_input(argv, data))
+		return (ft_clear(&data));
 	data->stack_a = fill_stacks(argv, argc, &data);
 	is_dup(data->stack_a, data);
 	while (get_next_line(0, &line))
@@ -73,8 +72,8 @@ int	main(int argc, char **argv)
 		free(line);
 	}
 	if (is_sorted(data->stack_a) == 1)
-		ft_putstr_fd("OK\n", 1);
+		ft_putstr_fd("OK\n", 2);
 	else
-		ft_putstr_fd("KO\n", 1);
+		ft_putstr_fd("KO\n", 2);
 	return (0);
 }
