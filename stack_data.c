@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 20:14:57 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/15 04:12:18 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/15 05:24:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,6 @@ int		stack_length(t_node	*stack)
 		stack_length++;
 	}
 	return (stack_length);
-}
-
-void	print_list(t_node *head)
-{
-	t_node	*tmp;
-
-	tmp = head;
-	while (tmp != NULL)
-	{
-		printf("%d\n", tmp->value);
-		tmp = tmp->next;
-	}
 }
 
 void	print_instruction_list(t_node *head)
