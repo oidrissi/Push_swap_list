@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 		exec_instruction(line, data);
 		free(line);
 	}
-	if (is_sorted(data->stack_a) == 1)
+	if (data->stack_a && is_sorted(data->stack_a) == 1)
 		ft_putstr_fd("OK\n", 2);
 	else
 		ft_putstr_fd("KO\n", 2);

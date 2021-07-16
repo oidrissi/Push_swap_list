@@ -12,6 +12,7 @@
 
 CC = clang
 FLAGS = -Wall -Wextra -Werror -fsanitize=address
+FLAGSB = -Wall -Wextra -Werror
 NAME = push_swap
 NAMEB = checker
 
@@ -52,7 +53,7 @@ $(NAME): $(SRC)
 bonus: $(NAMEB)
 
 $(NAMEB): $(SRCB)
-	@$(CC) $(SRCB) $(FLAGS) -o $(NAMEB)
+	@$(CC) $(SRCB) $(FLAGSB) -o $(NAMEB)
 
 fclean:
 	@rm -rf $(NAME) $(NAMEB)
