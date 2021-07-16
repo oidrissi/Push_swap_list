@@ -23,7 +23,7 @@ void	init_data(t_data *data, int argc)
 void	free_node(t_node	**node)
 {
 	t_node	*tmp;
-	
+
 	while (*node)
 	{
 		tmp = *node;
@@ -34,7 +34,7 @@ void	free_node(t_node	**node)
 	}
 }
 
-int		ft_clear(t_data **data)
+int	ft_clear(t_data **data)
 {
 	free_node(&((*data)->stack_a));
 	free_node(&((*data)->stack_b));

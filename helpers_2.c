@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int		ft_strcmp(char *s, char *comp)
+int	ft_strcmp(char *s, char *comp)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ int		ft_strcmp(char *s, char *comp)
 			return (1);
 		i++;
 	}
-	return (0);	
+	return (0);
 }
 
 void	ft_puterror(char *error, t_data **data)
@@ -49,4 +49,3 @@ void	ft_putstr_fd(char *s, int fd)
 		}
 	}
 }
-

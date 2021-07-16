@@ -85,10 +85,10 @@ int	midpoint_finder(t_node *stack)
 	return (midpoint);
 }
 
-int		is_sorted(t_node *stack)
+int	is_sorted(t_node *stack)
 {
-	t_node *list;
-	
+	t_node	*list;
+
 	list = stack;
 	while (list->next != NULL)
 	{
@@ -99,7 +99,7 @@ int		is_sorted(t_node *stack)
 	return (1);
 }
 
-int		is_dup(t_node *stack, t_data *data)
+int	is_dup(t_node *stack, t_data *data)
 {
 	t_node	*tmp;
 	t_node	*head;

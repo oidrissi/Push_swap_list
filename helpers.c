@@ -64,7 +64,7 @@ int	is_correct(char *str)
 	return (1);
 }
 
-int		correct_input(char **tab, t_data *data)
+int	correct_input(char **tab, t_data *data)
 {
 	int		i;
 

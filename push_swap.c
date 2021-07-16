@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-int		main(int	argc, char	**argv)
+int	main(int	argc, char	**argv)
 {
 	t_data	*data;
-	
+
 	data = malloc(sizeof(t_data));
 	init_data(data, argc);
 	if (argc == 1 || !correct_input(argv, data))

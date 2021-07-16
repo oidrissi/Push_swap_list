@@ -55,7 +55,7 @@ int	len_chunk(t_node *stack)
 	return (len);
 }
 
-int		higher_than_midpoint(t_node *node, int midpoint)
+int	higher_than_midpoint(t_node *node, int midpoint)
 {
 	int		chunk;
 	t_node	*tmp;
@@ -71,7 +71,7 @@ int		higher_than_midpoint(t_node *node, int midpoint)
 	return (0);
 }
 
-int		lower_than_midpoint(t_node *node, int midpoint)
+int	lower_than_midpoint(t_node *node, int midpoint)
 {
 	int		chunk;
 	t_node	*tmp;

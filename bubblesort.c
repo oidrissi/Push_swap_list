@@ -12,18 +12,18 @@
 
 #include "push_swap.h"
 
-void	swap(int *a, int *b) 
-{ 
-	int temp;
+void	swap(int *a, int *b)
+{
+	int	temp;
 
-	temp = *a; 
-	*a = *b; 
-	*b = temp; 
-}  
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
 
-void	bubblesort(int array[], int n) 
-{ 
-    int	i;
+void	bubblesort(int array[], int n)
+{
+	int	i;
 	int	j;
 
 	i = 0;
@@ -33,7 +33,7 @@ void	bubblesort(int array[], int n)
 		while (j < n - i - 1)
 		{
 			if (array[j] > array [j + 1])
-				swap(&array[j], &array[j+1]);
+				swap(&array[j], &array[j + 1]);
 			j++;
 		}
 		i++;

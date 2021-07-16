@@ -14,7 +14,7 @@
 
 t_node	*create_new_node(int elem)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	tmp = (t_node *)malloc(sizeof(t_node));
 	tmp->value = elem;
@@ -23,12 +23,12 @@ t_node	*create_new_node(int elem)
 	return (tmp);
 }
 
-int		stack_length(t_node	*stack)
+int	stack_length(t_node	*stack)
 {
 	int		stack_length;
 	t_node	*tmp;
-    
-    stack_length = 0;
+
+	stack_length = 0;
 	tmp = stack;
 	while (tmp)
 	{
@@ -59,11 +59,10 @@ void	add_back(t_node **head, t_node *to_insert)
 		ft_listlast(*head)->next = to_insert;
 }
 
-
 t_node	*fill_stacks(char **argv, int argc, t_data **data)
 {
-	int i;
-	t_node *tmp;
+	int		i;
+	t_node	*tmp;
 
 	i = 1;
 	tmp = NULL;
