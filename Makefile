@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-FLAGS = -Wall -Wextra -Werror
+CC = clang
+FLAGS = -Wall -Wextra -Werror -fsanitize=address
 NAME = push_swap
 NAMEB = checker
 
@@ -47,7 +47,7 @@ SRCB = checker.c\
 all: $(NAME)
 
 $(NAME): $(SRC)
-	@$(CC) $(SRC) $(FLAGS) -o $(NAME)
+	@$(CC) $(SRC) -g $(FLAGS) -o $(NAME)
 
 bonus: $(NAMEB)
 

@@ -23,11 +23,11 @@ int		main(int	argc, char	**argv)
 	data->stack_a = fill_stacks(argv, argc, &data);
 	if (is_sorted(data->stack_a) == 1 || is_dup(data->stack_a, data) == 1)
 		return (ft_clear(&data));
-	if (stack_length(data->stack_a) == 2)
+	else if (stack_length(data->stack_a) == 2)
 		exec_instruction("sa", data);
-	if (stack_length(data->stack_a) == 3)
+	else if (stack_length(data->stack_a) == 3)
 		sort_3(data);
-	if (stack_length(data->stack_a) >= 4)
+	else if (stack_length(data->stack_a) >= 4)
 		sort(data);
 	print_instruction_list(data->instruction_list);
 	ft_clear(&data);
