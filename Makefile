@@ -12,7 +12,6 @@
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-FLAGSB = -Wall -Wextra -Werror
 NAME = push_swap
 NAMEB = checker
 
@@ -48,12 +47,12 @@ SRCB = checker.c\
 all: $(NAME)
 
 $(NAME): $(SRC)
-	@$(CC) $(SRC) -g $(FLAGS) -o $(NAME)
+	@$(CC) $(SRC) $(FLAGS) -o $(NAME)
 
 bonus: $(NAMEB)
 
 $(NAMEB): $(SRCB)
-	@$(CC) $(SRCB) $(FLAGSB) -o $(NAMEB)
+	@$(CC) $(SRCB) $(FLAGS) -o $(NAMEB)
 
 fclean:
 	@rm -rf $(NAME) $(NAMEB)
