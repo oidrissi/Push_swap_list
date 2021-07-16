@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oidrissi <oidrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 21:06:46 by oidrissi          #+#    #+#             */
-/*   Updated: 2021/07/15 10:37:02 by marvin           ###   ########.fr       */
+/*   Updated: 2021/07/16 16:47:12 by oidrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ typedef struct s_data
 	t_node	*stack_b;
 	t_node	*instruction_list;
 	int		nb_elements;
-}               t_data;
+}				t_data;
 
 void		bubblesort(int array[], int n);
-void		swap(int *a, int *b) ;
+void		swap(int *a, int *b);
 void		print_instruction_list(t_node *head);
 int			is_sorted(t_node *stack);
 int			chunk_sorted(t_node *node);
@@ -67,7 +67,7 @@ int			stack_length(t_node	*stack);
 int			len_chunk(t_node *stack);
 int			ft_strcmp(char *s, char *comp);
 void		smart_push_rotate(t_data *data, int rot);
-int     	midpoint_finder(t_node *stack);
+int			midpoint_finder(t_node *stack);
 int			higher_than_midpoint(t_node *node, int midpoint);
 int			lower_than_midpoint(t_node *node, int midpoint);
 void		finish_chunk(t_data *data, t_node *tmp);
