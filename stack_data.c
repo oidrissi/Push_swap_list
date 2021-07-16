@@ -20,6 +20,7 @@ t_node	*create_new_node(int elem)
 	tmp->value = elem;
 	tmp->instruction = NULL;
 	tmp->next = NULL;
+	tmp->chunk = 0;
 	return (tmp);
 }
 

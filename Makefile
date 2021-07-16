@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang
-FLAGS = -Wall -Wextra -Werror -fsanitize=address
+CC = gcc
+FLAGS = -Wall -Wextra -Werror
 FLAGSB = -Wall -Wextra -Werror
 NAME = push_swap
 NAMEB = checker

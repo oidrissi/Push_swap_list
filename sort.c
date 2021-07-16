@@ -30,8 +30,7 @@ void	smart_push_rotate(t_data *data, int rot)
 	int	nra;
 
 	chunk = data->stack_a->chunk;
-	while (!is_sorted(data->stack_a)
-		&& len_chunk(data->stack_a) > 2)
+	while (!is_sorted(data->stack_a) && len_chunk(data->stack_a) > 2)
 	{
 		chunk++;
 		nra = 0;
@@ -112,7 +111,7 @@ void	sort(t_data *data)
 		|| stack_length(data->stack_a) != data->nb_elements)
 	{
 		if (is_sorted(data->stack_a) && !data->stack_b)
-			return ;
+			exit(0);
 		else
 		{
 			if (!is_sorted(data->stack_a))
